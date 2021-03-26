@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Checkbox Practice</title>
+   <style>
+      div {
+         position: absolute;
+         left: 50%;
+         top: 40%;
+         transform: translate(-50%, -50%);
+      }
+
+      input[type="text"]:disabled {
+         background: #ccc;
+      }
+
+      input[type="text"]:enabled {
+         background: rgb(255, 255, 255);
+      }
+
+      input:disabled+span::after {
+         content: "❌";
+      }
+
+      input:enabled+span::after {
+         content: "✔️";
+      }
+   </style>
+</head>
+
+<body style="font-family: Arial, Helvetica, sans-serif;">
+   <div>
+      <br>
+      <h4 align=center>HTML CheckBox Practice</h4>
+      <br>
+
+      <p>1. Use a checkbox to control the readonly property of a textbox. If checkbox is check make
+         the textbox readonly and If the check is unchecked make the textbox editable.
+      </p>
+      <input type="checkbox" name="grp1" id="checkbox1" />
+      <label for="checbox1">Disable TextBox</label>
+      <input type="text" id="textbox" placeholder="Enter Text Here" />
+      <span></span>
+      <br>
+      <br>
+      <br>
+
+      <p>2. Create 2 groups of checkboxes and display all the values of the checkboxes checked by the user.</p>
+      Fruits: <br>
+      <input type="checkbox" name="grp2" value="Mango"> Mango
+      <input type="checkbox" name="grp2" value="Banana"> Banana
+      <input type="checkbox" name="grp2" value="Orange"> Orange
+      <input type="checkbox" name="grp2" value="Pineapple"> Pineapple
+      <br><br>
+      Vegetables: <br>
+      <input type="checkbox" name="grp3" value="Spinach"> Spinach
+      <input type="checkbox" name="grp3" value="Cabbage"> Cabbage
+      <input type="checkbox" name="grp3" value="Onion"> Onion
+      <input type="checkbox" name="grp3" value="Potato"> Potato
+      <br><br>
+      <input type="button" onclick="getValues()" value="CLICK!">
+      <hr>
+      <span id="result"></span>
+
+   </div>
+
+   <script>
+      document.getElementById("checkbox1").onchange = function () {
+         var textfield = document.getElementById("textbox");
+         textfield.disabled = this.checked;
+         if (textfield.disabled) {
+            document.getElementById("textbox").placeholder = "UnCheck to Enable Input";
+         } else {
+            document.getElementById("textbox").placeholder = "Enter Text Here";
+         }
+      }
+
+      function getValues() {
+         document.getElementById("result").innerHTML = null;
+         var grp2 = document.getElementsByName("grp2");
+         for (let i = 0; i < grp2.length; i++) {
+            if (grp2[i].checked)
+               document.getElementById("result").innerHTML += `<li> ${grp2[i].value} </li>`;
+         }
+
+         var grp3 = document.getElementsByName("grp3");
+         for (let i = 0; i < grp3.length; i++) {
+            if (grp3[i].checked)
+               document.getElementById("result").innerHTML += `<li> ${grp3[i].value} </li>`;
+         }
+      }
+   </script>
+
+</body>
+
+</html>
