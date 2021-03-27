@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Files' MetaData</title>
+</head>
+
+<body>
+   <form action="#">
+      <input type="file" multiple id="files">
+      <output id="metadata"></output>
+   </form>
+
+   <script>
+      document.getElementById("files").addEventListener("change", showFilesMetadata)
+      // To Show metadata of files using event.target.files obj
+      function showFilesMetadata(event) {
+         console.log(event);
+         var files = event.target.files;
+         var output = [];
+
+         for (let i = 0; i < files.length; i++) {
+            let f = files[i];
+            if (f.size) {
+               var size = formatSize(f.size);
+            }
+
+            output.push(`<li><strong>`, f.name, `(`, f.type || ` N/A`, `)</strong> -`, size, ', Last Modified:',
+               f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'N/A', '</li>');
+         }
+         document.getElementById("metadata").innerHTML = "<ul>" + output.join(" ") + "</ul>";
+      }
+      // Fn to Format bytes to show optimal size(bytes, KB, MB, GB, TB and so on)
+      function formatSize(bytes) {
+         if (bytes === 0) {
+            return "0 Bytes";
+         }
+         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+         const k = 1024;
+         const decimals = 2;
+         const power = Math.floor(Math.log(bytes) / Math.log(k));
+         let size = parseFloat((bytes / Math.pow(k, power)).toFixed(decimals)) + " " + sizes[power];
+         return size;
+      }
+   </script>
+</body>
+
+</html>
