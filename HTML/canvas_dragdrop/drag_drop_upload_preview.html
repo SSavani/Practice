@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Drag N Drop Images</title>
+   <style>
+      .drop-area {
+
+         width: 150px;
+         height: 25px;
+         border: 1px solid #999;
+         text-align: center;
+         padding: 10px;
+         cursor: pointer;
+      }
+
+      #files {
+         position: relative;
+         opacity: 0;
+         /* opacity: 0; */
+         display: none;
+         /* margin-left: 40%;
+         margin-top: 5%; */
+         width: 100%;
+         height: 100%;
+         /* padding: 10px; */
+
+      }
+
+      #thumbnail img {
+         width: 100px;
+         height: 100px;
+         margin: 5px;
+      }
+   </style>
+   <script>
+      function allowDrop(event) {
+         event.preventDefault();
+         event.stopPropagation();
+
+      }
+      function drop(event) {
+         event.preventDefault();
+         event.stopPropagation();
+         var files = event.dataTransfer.files;
+         showThumbnail(files);
+      }
+   </script>
+</head>
+
+<body>
+   <label for="files"><input type="file" id="files" multiple>
+      <div class="drop-area" id="upload" ondrop="drop(event)" ondragover="allowDrop(event)"
+         ondragenter="allowDrop(event)">
+         UPLOAD
+      </div>
+   </label>
+   <div id="thumbnail">
+   </div>
+   <script>
+      function showThumbnail(files) {
+         for (var i = 0; i < files.length; i++) {
+            var file = files[i]
+            var imageType = /image.*/
+            if (!file.type.match(imageType)) {
+               console.log("Not an Image");
+               continue;
+            }
+
+            var image = document.createElement("img");
+            var thumbnail = document.getElementById("thumbnail");
+            image.file = file;
+            thumbnail.appendChild(image)
+
+            var reader = new FileReader()
+            reader.onload = (function (img) {
+               return function (e) {
+                  img.src = e.target.result;
+               };
+            }(image))
+            var ret = reader.readAsDataURL(file);
+            var canvas = document.createElement("canvas");
+            ctx = canvas.getContext("2d");
+            image.onload = function () {
+               ctx.drawImage(image, 100, 100)
+            }
+         }
+      }
+      var divImg = document.getElementById("upload");
+      var inputImg = document.getElementById("files");
+      inputImg.addEventListener("change", function (ev) {
+         var files = this.files;
+         showThumbnail(files);
+      }, false)
+
+      divImg.addEventListener("change", function (ev) {
+         inputImg.click();
+         // ev.stopPropagation();
+         // ev.preventDefault();
+      }, false)
+
+   </script>
+</body>
+
+</html>
