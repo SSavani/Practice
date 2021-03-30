@@ -1,0 +1,58 @@
+<!-- *Resize image using range slider -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Resize Image</title>
+   <style>
+      * {
+         font-family: Arial, Helvetica, sans-serif;
+      }
+   </style>
+   <script>
+      // var loadImage = document.querySelector("#image")
+      // loadImage.onload=()=>{
+      //    var initWidth = loadImage.width
+      // }
+      // function resizeImage(val) {
+      //    var image=document.getElementById("image");
+      //    image.style.width = val*2+'%';
+      // }
+
+      var width;
+      function initWidth() {
+         var loadImage = document.querySelector("#image")
+         width = loadImage.width
+         loadImage.width = width * (document.getElementById("rate").value / 100);
+
+      }
+      function resizeImage(val) {
+         var thisRate = document.getElementsByName("thisRate")[0];
+         thisRate.value = val;
+         var image = document.getElementById("image");
+         image.width = width * (val / 100);
+      }
+   </script>
+</head>
+
+<body>
+   <form oninput="amount.value = (principle.valueAsNumber*rate.valueAsNumber)/100">
+      <fieldset>
+         <legend style="font-weight: bold;">Scale Image</legend>
+         <p><label for="rate">Slider to resize Image</label></p>
+         <input type="range" id="rate" min="0" max="100" value="20" oninput="resizeImage(this.value)"
+            style="width: 500px;">
+         <output name="thisRate" for="rate"></output><span>%</span>
+      </fieldset>
+   </form>
+   <div id="imgWrapper">
+      <img id="image" src="images/husky.jpg" alt="sunset" onload="initWidth()">
+
+   </div>
+
+</body>
+
+</html>
