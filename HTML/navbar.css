@@ -1,0 +1,56 @@
+.navbar ul {
+   list-style: none;
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: flex-end;
+   font-family: Helvetica, sans-serif;
+   margin: 0;
+   background: goldenrod;
+}
+.navbar li a {
+   text-decoration: none;
+   display: block;
+   padding: 1em;
+   color: whitesmoke;
+   cursor: pointer;
+}
+
+.navbar a:hover {
+   background: #311;
+}
+
+@media only screen and (max-width: 600px) {
+   .navbar ul {
+      justify-content: space-around;
+   }
+}
+
+.navbar ul li.dropdown {
+   float: left;
+   overflow: hidden;
+}
+
+.navbar ul li.dropdown ul.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #ffffff;
+   min-width: 60px;
+   z-index: 1;
+}
+
+.dropdown-content a {
+   float: none;
+   background: #333;
+   text-decoration: none;
+   display: block;
+   text-align: left;
+}
+
+.dropdown-content a:hover {
+   background-color: dimgray;
+   color: darkgoldenrod;
+}
+
+.navbar ul li.dropdown:hover > .dropdown-content {
+   display: block;
+}
