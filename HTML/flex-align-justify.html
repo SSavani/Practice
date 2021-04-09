@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Flex | Justify-Align(Content|Item)</title>
+   <style>
+      /* || Default Style */
+      html {
+         font-family: sans-serif;
+      }
+
+      body {
+         max-width: 960px;
+         margin: 20px auto;
+      }
+
+      h1 {
+         text-align: center;
+         color: teal;
+         text-decoration: underline double rosybrown;
+      }
+
+      h3 {
+         color: tomato;
+      }
+
+      button {
+         color: rosybrown ;
+         background-color: teal;
+         font-size: 18px;
+         line-height: 1.5;
+         width: 15%;
+      }
+
+      div {
+         height: 120px;
+         width: 100%;
+         border: 1px solid black;
+         display: flex;
+         flex-flow: row;
+         flex-wrap: wrap;
+      }
+
+      p {
+         color: rgb(134, 70, 70);
+      }
+
+      span {
+         font-style: italic;
+         color: rgb(83, 84, 153);
+         text-decoration: wavy;
+
+      }
+
+      /* || Align-Item Style */
+      .align-items {
+         align-items: center;
+      }
+
+      /* || Justify-Content Style */
+      .justify {
+         /* align-items: center; */
+         justify-content: space-around;
+      }
+
+      /* || Align-Content Style */
+      .align-content {
+         align-content: space-between;
+      }
+
+      .align-content button {
+         width: 25%;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>FlexBox Properties</h1>
+   <h3>Align-Item</h3>
+   <p>Align-Item property controls the alignment of flex items on the cross axis.</p>
+   <p> Here <span> flex:row => the cross axis = vertical axis </span> and for <span> flex:column => the
+         cross
+         axis = horizontal axis</span>.</p>
+   <div class="align-items">
+      <button>Smile</button>
+      <button>Laugh</button>
+      <button>Wink</button>
+      <button>Shrug</button>
+      <button>Blush</button>
+   </div>
+   <br><br>
+   <h3>Justify-Content</h3>
+   <p>Justify-Content property controls the alignment of flex items on the main axis of the flex container.
+   </p>
+   <p> Here <span> flex:row => the main axis = horizontal axis </span> and for <span> flex:column => the
+         main
+         axis = vertical axis</span>.
+   </p>
+   <div class="justify">
+      <button>Smile</button>
+      <button>Laugh</button>
+      <button>Wink</button>
+      <button>Shrug</button>
+      <button>Blush</button>
+   </div>
+   <br><br>
+   <h3>Align-Content</h3>
+   <p>Align-Content property sets the distribution of space between and around content items when there is extra space
+      in the cross axis, similar to how 'justify-content' aligns individual items within the main-axis.</p>
+   <p> Here <span> flex:row => the cross axis = horizontal axis </span> and for <span> flex:column => the
+         cross
+         axis = vertical axis</span>.</p>
+   <div class="align-content">
+      <button>Smile</button>
+      <button>Laugh</button>
+      <button>Wink</button>
+      <button>Shrug</button>
+      <button>Blush</button>
+   </div>
+</body>
+
+</html>
