@@ -41,6 +41,7 @@ body {
    color: #222;
    background: var(--primary);
 }
+
 input,
 textarea {
    background: rgba(255, 255, 255, 0.05);
@@ -50,12 +51,26 @@ textarea {
    color: #f2f2f2;
    font-size: 1em;
    outline: none;
+   /* transition */
    transition: border 0.3s;
 }
-
 textarea:focus,
 input:focus {
    border: 2px solid var(--primary);
+}
+
+.site-nav ul li {
+   padding: 10px 7px;
+   border-radius: 20px;
+   /* transition */
+   transition: background-color 0.5s;
+}
+.site-nav ul li:hover {
+   color: #222;
+   background: var(--primary);
+}
+.site-nav ul li:hover a {
+   color: #222;
 }
 
 /* fonts */
@@ -276,7 +291,7 @@ footer li {
    }
 }
 
-/* LARGE TABLET & LAPTOP STYLES  */
+/** LARGE TABLET & LAPTOP STYLES  */
 @media screen and (min-width: 960px) {
    body {
       font-size: 18px;
@@ -344,9 +359,9 @@ footer li {
    }
 }
 
-/* DESKTOP STYLES */
+/** DESKTOP STYLES */
 @media screen and (min-width: 1200px) {
-   */ body {
+   body {
       font-size: 20px;
    }
 
